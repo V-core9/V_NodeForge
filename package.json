@@ -1,0 +1,20 @@
+{
+  "name": "V_NodeForge",
+  "version": "1.0.0",
+  "description": "Code generator... tryout for now.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/V-core9/V_NodeForge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/V-core9/V_NodeForge/issues"
+  },
+  "homepage": "https://github.com/V-core9/V_NodeForge#readme"
+}
