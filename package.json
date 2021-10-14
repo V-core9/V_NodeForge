@@ -4,7 +4,8 @@
   "description": "Code generator... tryout for now.",
   "main": "vnf.js",
   "scripts": {
-    "test": "jest"
+    "test": "echo \" YEAAA \" ",
+    "build_app" : " echo 111 "
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,4 @@
     "url": "https://github.com/V-core9/V_NodeForge/issues"
   },
   "homepage": "https://github.com/V-core9/V_NodeForge#readme",
-  "devDependencies": {
-    "eslint": "^8.0.1",
-    "jest": "^27.2.5"
-  }
 }
