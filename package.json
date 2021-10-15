@@ -4,8 +4,8 @@
   "description": "Code generator... tryout for now.",
   "main": "vnf.js",
   "scripts": {
-    "test": "echo \" YEAAA \" ",
-    "build_app" : " echo 111 "
+    "test": "echo \" yea's \" ",
+    "build_app": " echo \"111\" "
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,5 @@
   "bugs": {
     "url": "https://github.com/V-core9/V_NodeForge/issues"
   },
-  "homepage": "https://github.com/V-core9/V_NodeForge#readme",
+  "homepage": "https://github.com/V-core9/V_NodeForge#readme"
 }
