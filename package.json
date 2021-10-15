@@ -5,7 +5,7 @@
   "main": "vnf.js",
   "scripts": {
     "test": "echo \" yea's \" ",
-    "build_app": " echo \"111\" "
+    "build_app": "webpack"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/V-core9/V_NodeForge/issues"
   },
-  "homepage": "https://github.com/V-core9/V_NodeForge#readme"
+  "homepage": "https://github.com/V-core9/V_NodeForge#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0"
+  }
 }
