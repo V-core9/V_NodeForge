@@ -5,7 +5,9 @@
   "main": "vnf.js",
   "scripts": {
     "test": "echo \" yea's \" ",
-    "build_app": "webpack"
+    "install": " bash -c \" npm install -g nodemon pm2 autocannon clinic localtunnel lighthouse jshint jest systeminfo node-notifier-cli node-sass\" ",
+    "build_app": "webpack",
+    "serve_app": "start bash -c \" node ./APP/  \" "
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   },
   "homepage": "https://github.com/V-core9/V_NodeForge#readme",
   "dependencies": {
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "webpack": "^5.58.2",
     "webpack-cli": "^4.9.0"
