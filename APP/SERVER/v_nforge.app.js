@@ -90,34 +90,49 @@ const vApp = {
     ],
   },
 
+
   //?-<[🌀]>-> Client Application Root Modules :-- - - - - - - - - - - - - - - - - - - - - - - - -  
   modules: {
-    //? :o> Express server  
-    compression: require("compression"),
-
-    //? :o> Express server  
-    express: require('express'),
-
-    //? :o> Express server  
-    app: express(),
-
-    //? :o> Express server  
-    fs: require("fs"),
-
-    //? :o> Express server  
-    path: require("path"),
-
-    //? :o> Express server  
-    os: require("os"),
-
-    //? :o> Express server  
-    process: require("process"),
-
-    //? :o> Express server  
-    net: require("net"),
-
-  },
+        //? :o> Express server  
+        compression: null  ,
+  
+        //? :o> Express server  
+        express: null,
+    
+        //? :o> Express server  
+        app: null,
+    
+        //? :o> Express server  
+        fs: null,
+    
+        //? :o> Express server  
+        path: null,
+    
+        //? :o> Express server  
+        os: null,
+    
+        //? :o> Express server  
+        process: null,
+    
+        //? :o> Express server  
+        net: null,
+      
+    },
   //<[⛔]>-> - - - - - - - - - - - - - - - -
+
+
+  //?<!!!>-> loadAppModules() :: load required node modules :------ - - - - - 
+  loadAppModules: () => {
+      vApp.modules.compression= require("compression");
+      vApp.modules.express= require('express');
+      vApp.modules.app= vApp.modules.express();
+      vApp.modules.fs= require("fs");
+      vApp.modules.path= require("path");
+      vApp.modules.os= require("os");
+      vApp.modules.process= require("process");
+      vApp.modules.net= require("net");
+  },
+  //<!!!>-> - - - - - - - - - - - - - - - -
 
 
   //?-<[⚡]{  getAppLocation()  }-> Method for getting app location  :-- - - -
@@ -140,11 +155,11 @@ const vApp = {
       vApp.modules.app.get(item.path, function (req, res) {
         res.send(`[ ${item.path} ] -> ${item.name}`);
         //*-- Then the alternative routes - - - - -
-        if (typeof item.alt_routes !== 'undefined') {
-          if (item.alt_routes.length > 0) {
-            item.alt_routes.forEach(route => {
-              vApp.modules.app.get(route, function (req, res) {
-                res.send(`[ ${route} ] -> ${item.name}`);
+        if (typeof item.alt_path_list !== 'undefined') {
+          if (item.alt_path_list.length() > 0) {
+            item.alt_path_list.forEach(alt_path => {
+              vApp.modules.app.get(alt_path, function (req, res) {
+                res.send(`[ ${alt_path} ] -> ${item.name}`);
               });
             });
           } else {
@@ -159,8 +174,8 @@ const vApp = {
 
   //?<🚀>> startListening ()  ]-> - - - - - - - - - - - - - - - - 
   startListening: () => {
-    vApp.modules.app.listen(port, () => {
-      console.log(`Example app listening at http://localhost:${port}`);
+    vApp.modules.app.listen(vApp.config.port, () => {
+      console.log(`Example app listening at http://localhost:${vApp.config.port}`);
     });
   },
   //<🚀>> startListening ()  ]-> - - - - - - - - - - - - - - - - 
@@ -169,6 +184,7 @@ const vApp = {
   //?-<[🧯]{  init()  }-> A simple way to just initialize app  :-> - - - - - - - - - - - - - - - -
   init: () => {
     console.time("V_APP -> INIT ()");
+    vApp.loadAppModules();
     vApp.getAppLocation();
     vApp.createAppRoutes();
     vApp.startListening();
@@ -178,7 +194,6 @@ const vApp = {
 
 };
 //! <[🛑]>-- V_App Application  ]-> - - - - - - - - - - - - - - - -
-
 
 vApp.init();     //? ⏪ [:  And the actual moment of init after appointing all routes  ]---
 
