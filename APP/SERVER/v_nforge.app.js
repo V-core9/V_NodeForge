@@ -1,8 +1,6 @@
 
-//? <🔩>-- V_Client Application 
-const v_app = {};
-
-const V_Client = {
+//? <🔩>-- V_App Application > - - - - - - - - - - - - - - - -
+const vApp = {
 
   config: {
     protocol: "http",
@@ -70,7 +68,7 @@ const V_Client = {
         name: "v_app",
         status: "public",
         path: "/v_app",
-        alt_path_list: ["/v_app.html", "/v_client", "/v_client.html"],
+        alt_path_list: ["/vApp.html", "/v_client", "/v_client.html"],
         do: () => {
           console.log("YEAAAAAAAA =>> v_app");
         }
@@ -119,33 +117,33 @@ const V_Client = {
     net: require("net"),
 
   },
-  //!<[⛔]>-> - - - - - - - - - - - - - - - -
+  //<[⛔]>-> - - - - - - - - - - - - - - - -
 
 
   //?-<[⚡]{  getAppLocation()  }-> Method for getting app location  :-- - - -
-  //* - NOTE :: This will also combine values from config to create web_location $STRING    
+  //- NOTE :: This will also combine values from config to create web_location $STRING    
   getAppLocation: () => {
-    if (v_app.config.web_location === null) {
-      var vHelper = v_app.config;
-      v_app.config.web_location = `${vHelper.protocol}://${vHelper.host}:${vHelper.port}`;
+    if (vApp.config.web_location === null) {
+      var vHelper = vApp.config;
+      vApp.config.web_location = `${vHelper.protocol}://${vHelper.host}:${vHelper.port}`;
     }
-    return v_app.config.web_location;
+    return vApp.config.web_location;
   },
-  //!<[⚡]>{  getAppLocation()  }-> - - - - - - - - - - - - - - - -
+  //<[⚡]>{  getAppLocation()  }-> - - - - - - - - - - - - - - - -
 
 
   //?<🎯>> createApplicationRoutes ()  ]-> - - - - - - - - - - - - - - - - 
-  //* - NOTE :: Utilizes routes ARRAY from V_Client.data.routes to create application.  
+  // - NOTE :: Utilizes routes ARRAY from V_Client.data.routes to create application.  
   createAppRoutes: () => {
-    v_app.data.routes.forEach(item => {
+    vApp.data.routes.forEach(item => {
       //?-> a place where we configure express to use routes
-      v_app.modules.app.get(item.path, function (req, res) {
+      vApp.modules.app.get(item.path, function (req, res) {
         res.send(`[ ${item.path} ] -> ${item.name}`);
         //*-- Then the alternative routes - - - - -
         if (typeof item.alt_routes !== 'undefined') {
           if (item.alt_routes.length > 0) {
             item.alt_routes.forEach(route => {
-              v_app.modules.app.get(route, function (req, res) {
+              vApp.modules.app.get(route, function (req, res) {
                 res.send(`[ ${route} ] -> ${item.name}`);
               });
             });
@@ -156,40 +154,32 @@ const V_Client = {
       });
     });
   },
-  //!<🎯>> createApplicationRoutes ()  ]-> - - - - - - - - - - - - - - - - 
+  //<🎯>> createApplicationRoutes ()  ]-> - - - - - - - - - - - - - - - - 
 
 
   //?<🚀>> startListening ()  ]-> - - - - - - - - - - - - - - - - 
   startListening: () => {
-    v_app.modules.app.listen(port, () => {
+    vApp.modules.app.listen(port, () => {
       console.log(`Example app listening at http://localhost:${port}`);
     });
   },
-  //!<🚀>> startListening ()  ]-> - - - - - - - - - - - - - - - - 
+  //<🚀>> startListening ()  ]-> - - - - - - - - - - - - - - - - 
 
 
   //?-<[🧯]{  init()  }-> A simple way to just initialize app  :-> - - - - - - - - - - - - - - - -
   init: () => {
     console.time("V_APP -> INIT ()");
-    v_app.getAppLocation();
-    v_app.createAppRoutes();
-    v_app.startListening();
+    vApp.getAppLocation();
+    vApp.createAppRoutes();
+    vApp.startListening();
     console.timeEnd("V_APP -> INIT ()");
   }
-  //!<[🧯]>{  init()  }-> - - - - - - - - - - - - - - - -
-
+  //<[🧯]>{  init()  }-> - - - - - - - - - - - - - - - -
 
 };
-//! <[🛑]>-- V_Client Application  ]-> - - - - - - - - - - - - - - - -
+//! <[🛑]>-- V_App Application  ]-> - - - - - - - - - - - - - - - -
 
 
-//?  ==========================================
-//?  ||  And the actual moment of init after appointing all routes   ||
-//?  ==========================================
+vApp.init();     //? ⏪ [:  And the actual moment of init after appointing all routes  ]---
 
-v_app.init();
-
-//!  ==========================================
-//!  ||  And the actual moment of init after appointing all routes   ||
-//!  ==========================================
 
