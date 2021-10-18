@@ -197,4 +197,4 @@ const vApp = {
 
 vApp.init();     //? ⏪ [:  And the actual moment of init after appointing all routes  ]---
 
-
+module.exports = vApp;

@@ -5,7 +5,7 @@
   "main": "vnf.js",
   "scripts": {
     "test": "echo \" yea's \" ",
-    "install": " bash -c \" npm install -g nodemon pm2 autocannon clinic localtunnel lighthouse jshint jest systeminfo node-notifier-cli node-sass\" ",
+    "install_globals": " bash -c \" npm install -g nodemon pm2 autocannon clinic localtunnel lighthouse jshint jest systeminfo node-notifier-cli node-sass\" ",
     "build_app": "webpack",
     "serve_app": "start bash -c \" node ./APP/  \" "
   },
