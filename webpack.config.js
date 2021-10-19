@@ -3,11 +3,11 @@ const path = require('path');
 module.exports = {
   mode: "production",
   entry: {
-    home: "./APP/SOURCE/index.js",
+    main: "./APP/SOURCE/index.js",
   },
   target: ['web'],
   output: {
-    path: path.resolve(__dirname, "APP/PUBLIC"),
+    path: path.resolve(__dirname, "APP/public/js"),
     filename: "[name].V-core9.js"
   }
 };
