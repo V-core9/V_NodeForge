@@ -79,7 +79,7 @@ const vApp = {
 
       //?-> a place where we configure express to use routes
       vApp.modules.app.get(item.path, function (req, res) {
-        res.send(`[ ${item.path} ] -> ${item.name}`);
+        res.send(item.do() + `[ ${item.path} ] -> ${item.name}`);
       });
 
       //*-- Then the alternative routes - - - - -
@@ -87,6 +87,7 @@ const vApp = {
         if (item.alt_path_list.length > 0) {
           item.alt_path_list.forEach(alt_path => {
             vApp.modules.app.get(alt_path, function (req, res) {
+              item.do();
               res.send(`[ ${alt_path} ] -> ${item.name}`);
             });
           });
@@ -119,6 +120,7 @@ const vApp = {
   //?-<[🧯]{  init()  }-> A simple way to just initialize app  :-> - - - - - - - - - - - - - - - -
   init: () => {
     console.time("V_APP -> INIT ()");
+    vApp.load_ENV_Settings();
     vApp.loadAppModules();
     vApp.getAppLocation();
     vApp.createAppRoutes();

@@ -1,1 +1,3 @@
-console.log("YEAAA")
+console.log("YEAAA");
+
+const V_DOM = require("../../vModules");
