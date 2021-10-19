@@ -1,12 +1,8 @@
 console.log("YEAAA SERVER STARTER!!!");
-
-
-// Rquired things before we run___
 require("dotenv").config();
+const path = require("path");
 const compression = require("compression");
 const express = require("express");
-const bodyParser = require("body-parser");
-const path = require("path");
 
 
 //> Basic test if in dev mode
@@ -23,27 +19,27 @@ if (typeof process.env.NODE_ENV !== "undefined") {
 }
 //--------------------
 
-const STATIC = path.resolve(__dirname, "PUBLIC");
-const INDEX = path.resolve(STATIC, "index.html");
-const AppPROTOCOL = (typeof process.env.APP_PROTOCOL !== "undefined") ? process.env.APP_PROTOCOL : "http";
-const AppHOST = (typeof process.env.APP_HOST !== "undefined") ? process.env.APP_HOST : "localhost";
-const AppPORT = (typeof process.env.APP_PORT !== "undefined") ? process.env.APP_PORT : "3200";
-const AppFOLDER = (typeof process.env.APP_FOLDER !== "undefined") ? process.env.APP_FOLDER : "";
-let AppURL = `${AppPROTOCOL}://${AppHOST}:${AppPORT}/${AppFOLDER}`;
+const STATIC = path.join(__dirname, "./PUBLIC");
+const INDEX = path.join(STATIC, "index.html");
+const API_PROTOCOL = (typeof process.env.API_PROTOCOL !== "undefined") ? process.env.API_PROTOCOL : "http";
+const API_HOST = (typeof process.env.API_HOST !== "undefined") ? process.env.API_HOST : "localhost";
+const API_PORT = (typeof process.env.API_PORT !== "undefined") ? process.env.API_PORT : "3200";
+const API_STATIC_FOLDER = (typeof process.env.API_STATIC_FOLDER !== "undefined") ? process.env.API_FOLDER : "";
+let API_URL = `${API_PROTOCOL}://${API_HOST}:${API_PORT}/${API_STATIC_FOLDER}`;
 
 
 
-const app = express();
-app.use(bodyParser.json());
+const api = express();
+
 // compress all responses
-app.use(compression());
+api.use(compression());
 // Static content
-app.use(express.static(STATIC));
+api.use(express.static(STATIC));
 // All GET request handled by INDEX file
-app.get("*", function (req, res) {
+api.get("*", function (req, res) {
   res.sendFile(INDEX);
 });
 // Start server
-app.listen(AppPORT, function () {
-  console.log("Server up and running on " + AppURL);
+api.listen(API_PORT, function () {
+  console.log("Server up and running on " + API_URL);
 });

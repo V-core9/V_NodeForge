@@ -7,7 +7,8 @@
     "test": "echo \" yea's \" ",
     "install_globals": " bash -c \" npm install -g nodemon pm2 autocannon clinic localtunnel lighthouse jshint jest systeminfo node-notifier-cli node-sass\" ",
     "build_app": "webpack",
-    "serve_app": "start bash -c \" node ./APP/  \" "
+    "start_app": "start bash -c \" node ./APP/  \" ",
+    "start_api": "start bash -c \" node ./API/  \" "
   },
   "repository": {
     "type": "git",
