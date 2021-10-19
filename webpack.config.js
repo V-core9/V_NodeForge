@@ -8,7 +8,7 @@ module.exports = {
   target: ['web'],
   output: {
     path: path.resolve(__dirname, "APP/PUBLIC"),
-    filename: "[name].v_bundle.js"
+    filename: "[name].V-core9.js"
   }
-}
+};
 

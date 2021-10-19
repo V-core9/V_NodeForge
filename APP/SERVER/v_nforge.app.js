@@ -1,4 +1,3 @@
-
 //? <🔩>-- V_App Application > - - - - - - - - - - - - - - - -
 const vApp = {
 
@@ -21,7 +20,7 @@ const vApp = {
         path: "/",
         alt_path_list: ["/index", "/index.html", "/home", "/landing"],
         do: () => {
-          console.log("YEAAAAAAAA =>> homepage");
+          console.log("MAIN PAGE LINK =>> homepage");
         }
         //! <[⚡]> - - - - - - - - - - - - - - - - - - - - 
       },
@@ -33,11 +32,10 @@ const vApp = {
         path: "/about",
         alt_path_list: ["/about.html", "/about_app", "/about-app", "/about-us", "/more-info", "/more_details"],
         do: () => {
-          console.log("YEAAAAAAAA =>> homepage");
+          console.log(" About the application =>> homepage");
         }
         //!<[💧]> - - - - - - - - - - - - - - - - - - - - 
       },
-
 
       {
         //?<[🚨]>> #3 :: Login Page         <]-----
@@ -46,7 +44,7 @@ const vApp = {
         path: "/login",
         alt_path_list: ["/login.html", "/sign_in", "/sign_in.html"],
         do: () => {
-          console.log("YEAAAAAAAA =>> login");
+          console.log("Login Page =>> login");
         }
         //!<[🚨]> - - - - - - - - - - - - - - - - - - - - 
       },
@@ -58,7 +56,7 @@ const vApp = {
         path: "/register",
         alt_path_list: ["/register.html", "/sign-up", "/sign-up.html", "/sign_up", "/new-user", "/register_user", "/new_register", "/new_user", "/new-register", "/register-user"],
         do: () => {
-          console.log("YEAAAAAAAA =>> register");
+          console.log("Register Page  =>> register");
         }
         //!<[🌠]]>> #4 :: Register Page         <]-----
       },
@@ -70,7 +68,7 @@ const vApp = {
         path: "/v_app",
         alt_path_list: ["/vApp.html", "/v_client", "/v_client.html"],
         do: () => {
-          console.log("YEAAAAAAAA =>> v_app");
+          console.log("V_App PAGE =>> v_app");
         }
         //!<[🔥]>> #5 :: V_App         <]-----
       },
@@ -82,7 +80,7 @@ const vApp = {
         path: "/V-core9",
         alt_path_list: ["/V-core9.html", "/v-core9", "/v-core9.html", "/V_core9", "/V_core9.html", "/Vc9", "/Vc9.html", "/author", "/author.html", "/main_author", "/main-author", "/main_author.html", "/main-author.html", "/author-main", "/author-main.html"],
         do: () => {
-          console.log("YEAAAAAAAA =>> register");
+          console.log("V-core9 Page =>> author");
         }
         //!<[🤠]]>> #6 :: Author Page        <]-----
       }
@@ -93,44 +91,44 @@ const vApp = {
 
   //?-<[🌀]>-> Client Application Root Modules :-- - - - - - - - - - - - - - - - - - - - - - - - -  
   modules: {
-        //? :o> Express server  
-        compression: null  ,
-  
-        //? :o> Express server  
-        express: null,
-    
-        //? :o> Express server  
-        app: null,
-    
-        //? :o> Express server  
-        fs: null,
-    
-        //? :o> Express server  
-        path: null,
-    
-        //? :o> Express server  
-        os: null,
-    
-        //? :o> Express server  
-        process: null,
-    
-        //? :o> Express server  
-        net: null,
-      
-    },
+    //? :o> Express server  
+    compression: null,
+
+    //? :o> Express server  
+    express: null,
+
+    //? :o> Express server  
+    app: null,
+
+    //? :o> Express server  
+    fs: null,
+
+    //? :o> Express server  
+    path: null,
+
+    //? :o> Express server  
+    os: null,
+
+    //? :o> Express server  
+    process: null,
+
+    //? :o> Express server  
+    net: null,
+
+  },
   //<[⛔]>-> - - - - - - - - - - - - - - - -
 
 
   //?<!!!>-> loadAppModules() :: load required node modules :------ - - - - - 
   loadAppModules: () => {
-      vApp.modules.compression= require("compression");
-      vApp.modules.express= require('express');
-      vApp.modules.app= vApp.modules.express();
-      vApp.modules.fs= require("fs");
-      vApp.modules.path= require("path");
-      vApp.modules.os= require("os");
-      vApp.modules.process= require("process");
-      vApp.modules.net= require("net");
+    vApp.modules.compression = require("compression");
+    vApp.modules.express = require('express');
+    vApp.modules.app = vApp.modules.express();
+    vApp.modules.fs = require("fs");
+    vApp.modules.path = require("path");
+    vApp.modules.os = require("os");
+    vApp.modules.process = require("process");
+    vApp.modules.net = require("net");
   },
   //<!!!>-> - - - - - - - - - - - - - - - -
 
@@ -151,22 +149,24 @@ const vApp = {
   // - NOTE :: Utilizes routes ARRAY from V_Client.data.routes to create application.  
   createAppRoutes: () => {
     vApp.data.routes.forEach(item => {
+      
       //?-> a place where we configure express to use routes
       vApp.modules.app.get(item.path, function (req, res) {
         res.send(`[ ${item.path} ] -> ${item.name}`);
-        //*-- Then the alternative routes - - - - -
-        if (typeof item.alt_path_list !== 'undefined') {
-          if (item.alt_path_list.length() > 0) {
-            item.alt_path_list.forEach(alt_path => {
-              vApp.modules.app.get(alt_path, function (req, res) {
-                res.send(`[ ${alt_path} ] -> ${item.name}`);
-              });
-            });
-          } else {
-            return false;
-          }
-        }
       });
+
+      //*-- Then the alternative routes - - - - -
+      if (typeof item.alt_path_list !== 'undefined') {
+        if (item.alt_path_list.length > 0) {
+          item.alt_path_list.forEach(alt_path => {
+            vApp.modules.app.get(alt_path, function (req, res) {
+              res.send(`[ ${alt_path} ] -> ${item.name}`);
+            });
+          });
+        } else {
+          return false;
+        }
+      }
     });
   },
   //<🎯>> createApplicationRoutes ()  ]-> - - - - - - - - - - - - - - - - 
