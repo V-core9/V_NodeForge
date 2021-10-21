@@ -1,35 +1,18 @@
 {
-  "name": "v_node_forge",
+  "name": "v_http2",
   "version": "1.0.1",
-  "description": "Code generator... tryout for now.",
-  "main": "vnf.js",
+  "description": "",
+  "main": "v_http2.js",
   "scripts": {
-    "test": "echo \" yea's \" ",
-    "install_globals": " bash -c \" npm install -g nodemon pm2 autocannon clinic localtunnel lighthouse jshint jest systeminfo node-notifier-cli node-sass\" ",
-    "build_app": "webpack",
-    "start_app": "start bash -c \" node ./APP/  \" ",
-    "start_api": "start bash -c \" node ./API/  \" "
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/V-core9/V_NodeForge.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate_certificates" : " bash -c \" openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt \" ",
+    "dev": "node v_http2.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/V-core9/V_NodeForge/issues"
-  },
-  "homepage": "https://github.com/V-core9/V_NodeForge#readme",
+  "license": "MIT",
   "dependencies": {
-    "apache-md5": "^1.1.7",
-    "axios": "^0.23.0",
-    "compression": "^1.7.4",
-    "cookie-parser": "^1.4.5",
-    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "is-online": "^9.0.1",
-    "webpack": "^5.58.2",
-    "webpack-cli": "^4.9.0"
+    "spdy": "^4.0.2"
   }
 }
