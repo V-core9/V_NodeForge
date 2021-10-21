@@ -5,7 +5,7 @@
   "main": "v_http2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate_certificates" : " bash -c \" openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt \" ",
+    "generate_certificates": " bash -c \" openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt \" ",
     "dev": "node v_http2.js"
   },
   "keywords": [],
