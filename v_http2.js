@@ -1,3 +1,14 @@
+const v_config = {
+  mode: "dev",
+  host: "localhost",
+  port: 4141,
+  protocol: "https",
+  getAppLocation() {
+    return `${v_config.protocol}://${v_config.host}:${v_config.port}/`
+  }
+};
+
+
 const spdy = require("spdy");
 const express = require("express");
 const fs = require("fs");
@@ -34,6 +45,42 @@ const V_core9 = {
       prime_path: "/about",
       alt_paths: ["/about-app", "/about_app", "/more_info", "/details",],
       template_file: "public/about.html",
+      resources: [
+        "/style/homepage.css",
+        "/scripts/homepage_1st.js",
+        "/scripts/homepage_2nd.js",
+        "/images/nodejs.png"
+      ]
+    },
+    {
+      name: "customer_login",
+      prime_path: "/login",
+      alt_paths: ["/customer_login", "/customer-login", "/user_login", "/user-login",],
+      template_file: "public/login.html",
+      resources: [
+        "/style/homepage.css",
+        "/scripts/homepage_1st.js",
+        "/scripts/homepage_2nd.js",
+        "/images/nodejs.png"
+      ]
+    },
+    {
+      name: "customer_register",
+      prime_path: "/register",
+      alt_paths: ["/customer_register", "/customer-register", "/user_register", "/user-register",],
+      template_file: "public/register.html",
+      resources: [
+        "/style/homepage.css",
+        "/scripts/homepage_1st.js",
+        "/scripts/homepage_2nd.js",
+        "/images/nodejs.png"
+      ]
+    },
+    {
+      name: "author",
+      prime_path: "/V-core9",
+      alt_paths: ["/author", "/v_core9"],
+      template_file: "public/author.html",
       resources: [
         "/style/homepage.css",
         "/scripts/homepage_1st.js",
@@ -92,9 +139,9 @@ spdy.createServer(
     cert: fs.readFileSync("./_system/.certs/server.crt")
   },
   app
-).listen(8000, (err) => {
+).listen(v_config.port, (err) => {
   if (err) {
     throw new Error(err);
   }
-  console.log("Listening on port 8000");
+  console.log(`Listening @>   ${v_config.getAppLocation()}`);
 });

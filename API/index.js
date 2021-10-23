@@ -165,16 +165,16 @@ const V_API = {
     V_API.app.post('/register', function (req, res) {
       console.log(req.body);
       var reqUsername = (req.body.username) ? req.body.username : null;
-      var isValidUsername = ( reqUsername !== 'undefined') ? V_Users.isValidUsername(reqUsername) : false;
+      var isValidUsername = (reqUsername !== 'undefined') ? V_Users.isValidUsername(reqUsername) : false;
       var isValidPassword = (req.body.password !== null && req.body.password === req.body.password_confirm) ? V_Users.isValidPassword(req.body.password) : false;
 
       if (isValidUsername === true && isValidPassword === true) {
         console.log(`User Inputs Validation Complete. Status isValidUsername ${isValidUsername}  ::  isValidPassword ${isValidPassword}`);
         var pathToUse = V_Users.dataDir + "/" + reqUsername;
-        console.log( createNewDirectory(pathToUse ) );
+        console.log(V_Users.createNewDirectory(pathToUse));
         //res.cookie('username', req.body.username, { maxAge: V_API.cfg.cookieMaxAge });
         //res.redirect('back');
-        res.setHeader("Content-Type", "")
+        res.setHeader("Content-Type", "");
       } else {
         res.send(`<h2>ERROR : Register FAILED </h2><p> Status isValidUsername ${isValidUsername}  ::  isValidPassword ${isValidPassword}</p> `);
       }
@@ -232,9 +232,9 @@ const V_Users = {
     if (username === null) return false;
     // check if directory exists
     var pathToCheck = V_Users.dataDir + "/" + username;
-    //var isUniqueUsername = directoryExists(pathToCheck);
+    //var isUniqueUsername = V_Users.directoryExists(pathToCheck);
     //console.log(`UniqueUsername : ${isUniqueUsername}`);
-    return (directoryExists(pathToCheck)) ? true : false;
+    return (V_Users.directoryExists(pathToCheck)) ? true : false;
   },
 
   isValidUsername: (username = null) => {
@@ -255,32 +255,34 @@ const V_Users = {
   isValidPassword: (password = null) => {
     if (password !== null && password.length > V_Users.cfg.password.minLength && password.length < V_Users.cfg.password.maxLength) return true;
     return false;
+  },
+
+
+  //*<[ 🔁 ]>-> Helpers / Multipurpose Function/Modules
+  async directoryExists(path) {
+    return await V_API.modules.fs.access(path, (error) => {
+      console.log(`Directory ${error ? 'does not exist' : 'exists'}`);
+      if (error) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+  },
+
+
+  async createNewDirectory(pathToUse) {
+    return await V_API.modules.fs.mkdir(V_API.modules.path.join(__dirname, pathToUse), (error) => {
+      if (error) {
+        console.warn(error);
+        return false;
+      }
+      console.log('Directory created successfully!');
+      return true;
+    });
   }
+  //*<[ 🔁 ]>-> Helpers  ]>- - - - - - - - - - - - - - -
+
 };
 //!<[ 🤵 ]>-> V_Users  ::  users module solution ]>- - - - -
 
-
-//*<[ 🔁 ]>-> Helpers / Multipurpose Function/Modules
-async function directoryExists(path) {
-  return await V_API.modules.fs.access(path, (error) => {
-    console.log(`Directory ${error ? 'does not exist' : 'exists'}`);
-    if (error) {
-      return false;
-    } else {
-      return true;
-    }
-  });
-}
-
-
-async function createNewDirectory(pathToUse ) {
-  return await V_API.modules.fs.mkdir(V_API.modules.path.join(__dirname , pathToUse ) , (error) => {
-    if (error) {
-      console.warn(error);
-      return false;
-    }
-    console.log('Directory created successfully!');
-    return true;
-  });
-}
-//*<[ 🔁 ]>-> Helpers  ]>- - - - - - - - - - - - - - -
