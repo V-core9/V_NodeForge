@@ -5,8 +5,7 @@ module.exports = {
   template_file: "public/login.html",
   resources: [
     "/style/homepage.css",
-    "/scripts/homepage_1st.js",
-    "/scripts/homepage_2nd.js",
-    "/images/nodejs.png"
+    "/style/customer_register.css",
+    "/scripts/V_App_Root.js",
   ]
 };

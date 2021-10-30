@@ -11,25 +11,30 @@
 
 <body>
   <article>
-    <form name="customer-register-account">
+    <form name="customer-register-account" onsubmit="return false">
       <label for="usernameInput">
-        <p>Username</p>
-        <input type="text" name="usernameInput" title="Username Input Space"/>
+        <p>🧢 Username</p>
+        <input type="text" name="usernameInput" id="usernameRegister" title="Username Input Space" />
+      </label>
+      <label for="emailInput">
+        <p>📧 Email</p>
+        <input type="text" name="emailInput" title="Username Input Space" />
       </label>
       <label for="passwordInput">
-        <p>Password</p>
-        <input type="password" name="passwordInput" title="Password Input Space"/>
+        <p>🔐 Password</p>
+        <input type="password" name="passwordInput" title="Password Input Space" id="passwordRegister" />
       </label>
       <label for="confirmPasswordInput">
-        <p>Confirm Password</p>
-        <input type="password" name="confirmPasswordInput" title="Confirm Password Input Space"/>
+        <p>🔨 Confirm Password</p>
+        <input type="password" name="confirmPasswordInput" title="Confirm Password Input Space"
+          id="confirmPasswordRegister" />
       </label>
       <label for="acceptTermsInput">
-        <p>Agree With Terms </p>
-        <input type="checkbox"  name="acceptTermsInput" title="Agreement checkbox for terms of service"/>
+        <p>🆗 Agree With Terms </p>
+        <input type="checkbox" name="acceptTermsInput" title="Agreement checkbox for terms of service" />
       </label>
-      <button type="submit">REGISTER</button>
-      </form>
+      <button type="submit" onclick="tryRegister()">REGISTER 🚀</button>
+    </form>
   </article>
   <footer>
     FOOTER SPACE HOLDER TEXT YEA

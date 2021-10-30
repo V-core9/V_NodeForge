@@ -5,7 +5,7 @@ module.exports = {
   template_file: "public/register.html",
   resources: [
     "/style/homepage.css",
+    "/style/customer_register.css",
     "/scripts/V_App_Root.js",
-    "/images/nodejs.png"
   ]
 };
