@@ -172,17 +172,12 @@ const V_API = {
         console.log(`User Inputs Validation Complete. Status isValidUsername ${isValidUsername}  ::  isValidPassword ${isValidPassword}`);
         var pathToUse = V_Users.dataDir + "/" + reqUsername;
         console.log(V_Users.createNewDirectory(pathToUse));
-        //res.cookie('username', req.body.username, { maxAge: V_API.cfg.cookieMaxAge });
-        //res.redirect('back');
         res.setHeader("Content-Type", "");
       } else {
         res.send(`<h2>ERROR : Register FAILED </h2><p> Status isValidUsername ${isValidUsername}  ::  isValidPassword ${isValidPassword}</p> `);
       }
 
     });
-
-
-
 
     //*------------------
     if (!module.parent) {
