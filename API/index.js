@@ -116,7 +116,7 @@ const V_API = {
   },
 
   //?<🧭>-> App Routing Method  ]>- - - - - - - - - - 
-  setupRouting: () => {
+  async setupRouting () {
 
     // parses request cookies, populating
     // req.cookies and req.signedCookies
@@ -153,8 +153,8 @@ const V_API = {
     //*------------------
     V_API.app.post('/login', function (req, res) {
       if (req.body.username && req.body.password) res.cookie('username', req.body.username, { maxAge: V_API.cfg.cookieMaxAge });
-      res.send({status: 200, token: { value: "123qwe456asd789zxc", maxAge: V_API.cfg.cookieMaxAge, timestamp: Date.now() }, username: req.body.username });
-     // res.redirect('back');
+      res.send({ status: 200, token: { value: "123qwe456asd789zxc", maxAge: V_API.cfg.cookieMaxAge, timestamp: Date.now() }, username: req.body.username });
+      // res.redirect('back');
     });
 
     //*------------------
@@ -180,24 +180,9 @@ const V_API = {
 
       if (isValidUsername === true && isValidPassword === true) {
         console.log(`User Inputs Validation Complete. Status isValidUsername ${isValidUsername}  ::  isValidPassword ${isValidPassword}`);
-        var pathToUse = V_Users.dataDir + "/" + reqUsername;
-
-
-        res.setHeader("Content-Type", "");
-        const dirResult = V_Users.createNewDirectory(pathToUse, req, res);
-
-        
-        var pathToUseData = V_Users.dataDir + "/" + reqUsername + "/profile.json" ;
-        const dataResult = V_Users.createNewUserData(pathToUseData, req.body.username, V_API.modules.md5Hash(req.body.password));
-
-        if (dirResult === true && dataResult === true) {
-          res.send(200);
-        } else {
-          res.send(400);
-        }
-
+        V_Users.registerNewUser(V_Users.dataDir + "/" + reqUsername, req, res);
       } else {
-        res.send(`<h2>ERROR : Register FAILED </h2><p> Status isValidUsername ${isValidUsername}  ::  isValidPassword ${isValidPassword}</p> `);
+        res.send(`<h2>ERROR : </h2><p> Valid Username ${isValidUsername}  ::  Valid Password ${isValidPassword}</p> `);
       }
 
     });
@@ -215,7 +200,7 @@ const V_API = {
   init: () => {
     V_API.loadModules();
     V_API.app = V_API.modules.express();
-    V_API.app.use(V_API.modules.cors({origin: 'https://localhost:4141'}));
+    V_API.app.use(V_API.modules.cors({ origin: ['https://localhost:4141', 'https://192.168.1.40:4141', 'https://127.1.1.1:4141', 'http://localhost:4141', 'http://127.1.1.1:4141', 'http://192.168.1.40:4141',] }));
     V_API.setupRouting();
     V_API.app.use(V_API.reqTimestamp);
     V_API.app.use(V_API.userAgent);
@@ -270,7 +255,7 @@ const V_Users = {
     return validUsername;
   },
 
-
+  //? [🎰] Checks if password input is valid entry ]>- - - - - -
   isValidPassword: (password = null) => {
     if (password !== null && password.length > V_Users.cfg.password.minLength && password.length < V_Users.cfg.password.maxLength) return true;
     return false;
@@ -290,31 +275,36 @@ const V_Users = {
   },
 
 
-  createNewDirectory(pathToUse, req, res) {
+  async registerNewUser(pathToUse, req, res) {
     return V_API.modules.fs.mkdir(V_API.modules.path.join(__dirname, pathToUse), (error) => {
       if (error) {
         console.warn(error);
+        res.send(400);
         return false;
       }
       console.log('Directory created successfully!');
 
-      return true;
+      V_Users.createNewUserData( req, res);
+      
     });
   },
   //*<[ 🔁 ]>-> Helpers  ]>- - - - - - - - - - - - - - -
 
-  createNewUserData(pathToUse, username, password) {
-    var json = JSON.stringify({username: username, password: password, register_ts: Date.now(), user_type: 'customer', first_name: null, last_name: null, email: null, birth_date: null, phone: null });
-    return V_API.modules.fs.writeFile(V_API.modules.path.join(__dirname, pathToUse), json, 'utf8',(error) => {
+  async createNewUserData(req, res) {
+    var json = JSON.stringify({ username: req.body.username, password: V_API.modules.md5Hash(req.body.password), register_ts: Date.now(), user_type: 'customer', first_name: null, last_name: null, email: null, birth_date: null, phone: null });
+    return await V_API.modules.fs.writeFile(V_API.modules.path.join(__dirname, V_Users.dataDir + "/" + req.body.username + "/profile.json"), json, 'utf8', (error) => {
       if (error) {
         console.warn(error);
+        res.send(400);
         return false;
       }
-      console.log('Directory created successfully!');
-
+      console.log('Profile.json file created successfully!');
+      res.send(200);
       return true;
     });
   }
 };
 //!<[ 🤵 ]>-> V_Users  ::  users module solution ]>- - - - -
 
+
+module.exports = V_API;
