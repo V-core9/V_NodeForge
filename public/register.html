@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🪓 Register Page</title>
+  <title>📦 Register</title>
   <link href="./style/homepage.css" rel="stylesheet">
   <link href="./style/customer_register.css" rel="stylesheet">
 </head>
@@ -13,25 +13,55 @@
   <article>
     <form name="customer-register-account" onsubmit="return false">
       <label for="usernameInput">
-        <p>🧢 Username</p>
+        <header>
+          <icon>🧢</icon>
+          <text>Username</text>
+        </header>
         <input type="text" name="usernameInput" id="usernameRegister" title="Username Input Space" />
+        <subtitle>
+          Your primary ID.
+        </subtitle>
       </label>
       <label for="emailInput">
-        <p>📧 Email</p>
+        <header>
+          <icon>📧</icon>
+          <text>Email</text>
+        </header>
         <input type="text" name="emailInput" title="Username Input Space" />
+        <subtitle>
+          Email to associate with your account.
+        </subtitle>
       </label>
       <label for="passwordInput">
-        <p>🔐 Password</p>
+        <header>
+          <icon>🔐</icon>
+          <text>Password</text>
+        </header>
         <input type="password" name="passwordInput" title="Password Input Space" id="passwordRegister" />
+        <subtitle>
+          Password you want to use.
+        </subtitle>
       </label>
       <label for="confirmPasswordInput">
-        <p>🔨 Confirm Password</p>
+        <header>
+          <icon>🔨</icon>
+          <text>Confirm Password</text>
+        </header>
         <input type="password" name="confirmPasswordInput" title="Confirm Password Input Space"
           id="confirmPasswordRegister" />
+        <subtitle>
+          Just confirmation that it's the right one.
+        </subtitle>
       </label>
       <label for="acceptTermsInput">
-        <p>🆗 Agree With Terms </p>
+        <header>
+          <icon>🆗</icon>
+          <text>Agree With Terms</text>
+        </header>
         <input type="checkbox" name="acceptTermsInput" title="Agreement checkbox for terms of service" />
+        <subtitle>
+          Confirmation that you agree with our terms of service.
+        </subtitle>
       </label>
       <button type="submit" onclick="tryRegister()">REGISTER 🚀</button>
     </form>

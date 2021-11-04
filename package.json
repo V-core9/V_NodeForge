@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate_certificates": " bash -c \" openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt \" ",
     "start_app": " start bash -c \"node APP_Http2.js\" ",
-    "start_api": " start bash -c \"node API.js\" ",
-    "start_both": " npm run start_api && npm run start_app "
+    "start_api": " start bash -c \"node api\" ",
+    "_start": " npm run start_api && npm run start_app "
   },
   "keywords": [],
   "author": "",

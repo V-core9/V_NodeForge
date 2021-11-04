@@ -22,7 +22,7 @@ if (V_App.config.autostart === true) {
 
 
 const vNetworkMapper = {
-  
+
   config:{
     default_api:{
       protocol: "http",
@@ -114,3 +114,24 @@ tryLogin = () => {
 
 window.tryRegister = tryRegister;
 window.tryLogin = tryLogin;
+
+
+
+
+//? ########################################
+//? #  🩺 Window Events in the Browser                    ##
+//? ########################################
+
+window.onload = (event) => {
+  console.log("Window EVENT >> [ onload ]");
+  console.log(event);
+};
+
+window.onclick = (event) => {
+  console.log("Window EVENT >> [ onclick ]");
+  console.log(event.target);
+  console.log(event.target.tagName);
+  if (event.target.tagName === "LABEL") {
+    event.target.querySelector('input').focus();
+  }
+};

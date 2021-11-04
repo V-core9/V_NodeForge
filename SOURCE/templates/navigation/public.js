@@ -10,10 +10,10 @@ navigationPublic = () => {
         <a href="/about">📑 About</a>
       </li>
       <li>
-        <a href="/author">🤘 Author</a>
+        <a href="/author">⚡ Author</a>
       </li>
       <li>
-        <a href="/login">🔑 Login</a>
+        <a href="/login">🔐 Login</a>
       </li>
       <li>
         <a href="/register">📦 Register</a>
