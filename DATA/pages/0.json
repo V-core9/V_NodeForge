@@ -1,0 +1,18 @@
+{
+  "title": "\"Homepage\"",
+  "prime_path": "\"/\"",
+  "alt_paths": "[\"home\",\"index\",\"welcome\", \"hello_world\"]",
+  "description": "\"Welcome to the landing page for the tech demo.\"",
+  "created_ts": "11111111111",
+  "updated_ts": "1111111122",
+  "author": "1",
+  "editor": "1",
+  "template_file": "\"Default\"",
+  "image": "\"#\"",
+  "parent": "null",
+  "status": "\"published\"",
+  "publish_ts": "11111111111",
+  "categories": "[\"2\", \"3\"]",
+  "tags": "[\"1\",\"0\",\"2\"]",
+  "resources": "[\"/style/homepage.css\", \"/scripts/homepage_1st.js\", \"/scripts/homepage_2nd.js\", \"/images/nodejs.png\"]"
+}

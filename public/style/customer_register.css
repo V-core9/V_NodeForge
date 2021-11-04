@@ -293,6 +293,18 @@ label:nth-child(5), label:nth-child(5) header, label:nth-child(5) input, label:n
   animation-delay: 3s;
 }
 
+label:nth-child(6), label:nth-child(6) header, label:nth-child(6) input, label:nth-child(6) subtitle {
+  animation-delay: 3.25s;
+}
+
+label:nth-child(7), label:nth-child(7) header, label:nth-child(7) input, label:nth-child(7) subtitle {
+  animation-delay: 3.5s;
+}
+
+label:nth-child(8), label:nth-child(8) header, label:nth-child(8) input, label:nth-child(8) subtitle {
+  animation-delay: 3.75s;
+}
+
 nav h1 {
   white-space: nowrap;
 }

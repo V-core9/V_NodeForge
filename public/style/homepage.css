@@ -8,36 +8,241 @@
   box-sizing: border-box;
 }
 
-html, body {
+html {
   background-color: #151c20;
+}
+
+body {
+  background: radial-gradient(#263238, #00000005);
   color: white;
 }
 
 h1 {
-  font-size:2em;
+  font-size: 2em;
   padding: 0.5em 1em;
   font-weight: 600;
 }
 
-nav{
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 0 10px black;
 }
-a{
+
+a {
   text-decoration: none;
 }
-ul li{
+
+ul li {
   list-style: none;
 }
+
 nav ul {
   display: flex;
-
+  flex-direction: row;
+  gap: 0.25em;
+  padding: 0.5em;
 }
-nav ul a{
+
+nav ul a {
   padding: 10px;
 }
-div{
+
+div {
   display: grid;
   place-items: center;
+}
+
+/*--------------------------------------------
+||  SVG LOGO WITH ANIMATION             ||
+||  Look for it in codepen.io cuz it's          ||
+||  in SCSS there.                                      ||
+---------------------------------------------*/
+
+body {
+  /* background: #000000; */
+  /* padding: 0; */
+  /* margin: 0; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-content: center; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* margin: 50px; */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+line {
+  stroke-dashoffset: 1000;
+  -webkit-animation: dash linear infinite;
+  animation: dash linear infinite;
+  -webkit-animation-direction: alternate, reverse, normal;
+  animation-direction: alternate, reverse, normal;
+}
+
+line.alter_direction_animation {
+  animation: dash reverse infinite;
+  -webkit-animation-direction: alternate, reverse, normal;
+  animation-direction: alternate, reverse, normal;
+}
+
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+section[type="two_image_hero"] {
+  display: flex;
+  flex-direction: row;
+  max-width: 1280px;
+  flex: 1;
+  min-height: 85vh;
+}
+
+section[type="two_image_hero"] img, section[type="two_image_hero"] svg {
+  flex: 1;
+  align-items: center;
+}
+
+article {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+section[type="two_image_hero"] img {
+  filter: hue-rotate(215deg) contrast(30) brightness(0);
+}
+
+section {
+  height: 100%;
+  width: 100%;
+}
+
+side {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  color: #607d8b;
+}
+
+nav ul li:last-child a {
+  border: 2px solid #607d8b;
+  border-radius: 1em;
+}
+
+a:hover {
+  background: #607d8b;
+  color: white;
+}
+side {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    padding: 1em;
+}
+
+button {
+    background: #607d8b;
+    color: white;
+    border: none;
+    padding: 0.5em 1.5em;
+    display: inline-flex;
+    width: fit-content;
+}
+
+[type="two_image_hero"] side h1 {
+    font-size: 2em;
+    font-weight: 800;
+    color: #87c6e5;
+}
+
+[type="two_image_hero"] side {}
+
+[type="two_image_hero"] side h2 {
+    background: #607d8b7d;
+    padding: .25em 1em;
+}
+
+[type="two_image_hero"] side ul {
+    margin: 2em 0;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: .25em;
+}
+
+[type="two_image_hero"] side ul li {
+    border-left: solid 2px #607d8b;
+    padding: .5em .5em;
+    background: linear-gradient(45deg, #40545d69, #0000);
+    box-shadow: 0 0 10px #00000038 inset;
+}
+footer {
+    background: #263238;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+credits {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    background: #ffffff14;
+    padding: .5em;
+    justify-content: flex-end;
+}
+
+footer section {
+    padding: 1em;
+    display: flex;
+}
+
+section[type="about_center_hero"] {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
 }

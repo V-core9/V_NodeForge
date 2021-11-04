@@ -1,13 +1,15 @@
 
+
 const spdy = require("spdy");
 const express = require("express");
+const compression = require("compression");
 const fs = require("fs");
 const { promisify } = require("util");
 
 const readFile = promisify(fs.readFile);
 
 const app = express();
-
+app.use(compression());
 app.use(express.static("public"));
 
 //app.get("/", async (req, res) => { homepage(req, res); });
