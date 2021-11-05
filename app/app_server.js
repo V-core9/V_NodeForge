@@ -17,14 +17,14 @@ app.use(express.static("public"));
 
 const V_core9 = {
 
-  v_config : require("./source/config/app_config"),
+  v_config : require("../config/app.cfg"),
   autostart: true,
 
-  _pagesList: require('./source/pages/_pages_list'),
+  _pages_list: require('./source/pages/_pages_list'),
 
   loadPage: async (pageName, req, res) => {
-    for (let i = 0; i < V_core9._pagesList.length; i++) {
-      const pageItem = V_core9._pagesList[i];
+    for (let i = 0; i < V_core9._pages_list.length; i++) {
+      const pageItem = V_core9._pages_list[i];
       if (pageItem.name === pageName) {
         //console.log(`FOUND A PAGE BY NAME: ${pageItem.name}`);
 
@@ -44,7 +44,7 @@ const V_core9 = {
   },
 
   createRoutes: () => {
-    V_core9._pagesList.forEach(item => {
+    V_core9._pages_list.forEach(item => {
       V_core9.createSingleRoutes(item.prime_path, item.name);
 
       item.alt_paths.forEach(altRoute => {

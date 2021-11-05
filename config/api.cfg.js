@@ -4,7 +4,7 @@ const v_config = {
   port: 4141,
   protocol: "https",
   getAppLocation() {
-    return `${v_config.protocol}://${v_config.host}:${v_config.port}/`
+    return `${v_config.protocol}://${v_config.host}:${v_config.port}/`;
   }
 };
 
