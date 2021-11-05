@@ -1,0 +1,326 @@
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  padding: 1em;
+  background: radial-gradient(#263238, #00000005);
+  gap: 1em;
+  box-shadow: 0 0 15px #0a0a0a inset;
+  max-width: 425px;
+  margin: 2em;
+  border-left: 3px solid #3d4f5a;
+  border-right: 3px solid #3d4f5a;
+}
+
+label {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+  justify-content: space-between;
+  border-left: 2px solid #607d8b;
+  border-right: 2px solid #607d8b;
+  padding: 0em 1em 0.5em 1em;
+  background: linear-gradient(45deg, rgb(96 125 139 / 15%), #0000);
+  font-size: 15px;
+  box-shadow: 0 0 15px rgb(96 125 139 / 5%) inset;
+  letter-spacing: 1px;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+label p {
+  margin: 0;
+}
+
+label:hover {
+  background: #8080800d;
+}
+
+label:hover {
+  background: linear-gradient(45deg, #39444a, #313d43);
+  box-shadow: 0 5px 10px #455a64;
+}
+
+input {
+  font-size: 1.25em;
+  line-height: 1.25em;
+  background: rgb(255 255 255 / 5%);
+  border: none;
+  border-bottom: 2px solid #607d8b21;
+  border-top: 2px solid #607d8b21;
+  padding: 0.25em;
+  text-shadow: 0 0 5px black;
+  color: #c7d8e1;
+  box-shadow: 0 0 10px #0000006b;
+}
+
+button {
+  padding: 0.5em 1em;
+  width: auto;
+  display: flex;
+  align-self: center;
+  background: #607d8b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 1em 2em;
+  letter-spacing: 2px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 10px black;
+}
+
+* {
+  border-radius: .5em;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+body {
+  background: radial-gradient(#263238, #00000005);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+label head {
+  font-size: 1em;
+}
+
+label header {
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  padding: 1em 0;
+  text-shadow: 0 0 10px #00000047;
+  /* margin-bottom: 0.5em; */
+  pointer-events: none;
+}
+
+label header text {
+  font-size: 1.15em;
+  color: white;
+}
+
+label subtitle {
+  font-size: 0.75em;
+  color: gray;
+  line-height: 1.5em;
+  /* padding: 0.5em; */
+  /* background: #ffffff0A; */
+  box-shadow: 0 0 10px rgb(0 0 0 / 5%) inset;
+  pointer-events: none;
+  ;
+}
+
+label header icon {
+  background: #00000014;
+  border-radius: 0 0 1em 1em;
+  padding: 1em;
+  border: .1em solid #607d8b00;
+  box-shadow: 0 5px 5px rgb(96 125 139 / 10%) inset;
+}
+
+nav ul li a {
+  white-space: nowrap;
+}
+
+/* The animation code */
+
+@keyframes example {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* The element to apply the animation to */
+
+article {
+  animation-name: example;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+
+/* The animation code */
+
+@keyframes formAnimationIn {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    height: auto;
+  }
+}
+
+/* The element to apply the animation to */
+
+form {
+  animation-name: formAnimationIn;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+
+/* The animation code */
+
+@keyframes formAnimationInLabel {
+  0% {
+    opacity: 0;
+    gap: 0em;
+    display: flex;
+    height: auto;
+  }
+  100% {
+    opacity: 1;
+    gap: 0.5em;
+    width: 100%;
+    padding: 0 1em 0.5em 1em;
+    display: flex;
+    height: auto;
+  }
+}
+
+/* The element to apply the animation to */
+
+label {
+  gap: 0em;
+  overflow: hidden;
+  height: 0;
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  animation-name: formAnimationInLabel;
+  animation-duration: .5s;
+  animation-delay: 2s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+
+/* The animation code */
+
+@keyframes formAnimationInLabelHeader {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    height: auto;
+    font-size: 1em;
+  }
+}
+
+/* The animation code */
+
+@keyframes formAnimationInLabelSubtitle {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    height: auto;
+    font-size: .5em;
+  }
+}
+
+/* The animation code */
+
+@keyframes formAnimationInLabelInput {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    height: auto;
+    font-size: 1.25em;
+  }
+}
+
+/* The element to apply the animation to */
+
+header, input, subtitle {
+  font-size: 0;
+  height: 0;
+  opacity: 0;
+  animation-name: formAnimationInLabelHeader;
+  animation-duration: .75s;
+  animation-delay: 2s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+
+subtitle {
+  animation-name: formAnimationInLabelSubtitle;
+}
+
+input {
+  animation-name: formAnimationInLabelInput;
+}
+
+label:nth-child(1), label:nth-child(1) header, label:nth-child(1) input, label:nth-child(1) subtitle {
+  animation-delay: 2s;
+}
+
+label:nth-child(2), label:nth-child(2) header, label:nth-child(2) input, label:nth-child(2) subtitle {
+  animation-delay: 2.25s;
+}
+
+label:nth-child(3), label:nth-child(3) header, label:nth-child(3) input, label:nth-child(3) subtitle {
+  animation-delay: 2.5s;
+}
+
+label:nth-child(4), label:nth-child(4) header, label:nth-child(4) input, label:nth-child(4) subtitle {
+  animation-delay: 2.75s;
+}
+
+label:nth-child(5), label:nth-child(5) header, label:nth-child(5) input, label:nth-child(5) subtitle {
+  animation-delay: 3s;
+}
+
+label:nth-child(6), label:nth-child(6) header, label:nth-child(6) input, label:nth-child(6) subtitle {
+  animation-delay: 3.25s;
+}
+
+label:nth-child(7), label:nth-child(7) header, label:nth-child(7) input, label:nth-child(7) subtitle {
+  animation-delay: 3.5s;
+}
+
+label:nth-child(8), label:nth-child(8) header, label:nth-child(8) input, label:nth-child(8) subtitle {
+  animation-delay: 3.75s;
+}
+
+nav h1 {
+  white-space: nowrap;
+}
+
+nav {
+  box-shadow: 0 5px 10px black;
+  background: linear-gradient(45deg, #070b0e, #232e34);
+  color: #607d8b;
+}
+
+nav a {
+  color: #607d8b;
+}
+
+input:focus {
+  border-bottom: 2px solid #607d8b;
+  border-top: 2px solid #607d8b;
+  background: #ffffff26;
+}

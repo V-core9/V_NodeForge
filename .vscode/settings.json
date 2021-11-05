@@ -1,4 +1,8 @@
 {
+  "cSpell.words": [
+    "keyout",
+    "newkey"
+  ],
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -7,13 +11,11 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/node_modules": true,
-    ".vscode": true,
-    ".dependencygraph": true,
-    ".VSCodeCounter": true,
+    ".gitignore": true,
     ".editorconfig": true,
     "package-lock.json": true,
-    ".gitignore": true,
     ".jshintrc": true,
+    ".vscode": true,
     ".github": true
   },
   "explorerExclude.backup": null

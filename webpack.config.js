@@ -1,14 +1,12 @@
 const path = require('path');
+const appDirname = "app";
 
 module.exports = {
-  mode: "production",
-  entry: {
-    main: "./APP/SOURCE/index.js",
-  },
-  target: ['web'],
+  target: 'web',
+  mode: 'production',
+  entry: `./${appDirname}/source/vRootApp.js`,
   output: {
-    path: path.resolve(__dirname, "APP/public/js"),
-    filename: "[name].V-core9.js"
-  }
+    filename: 'v_app.js',
+    path: path.resolve(__dirname, `${appDirname}/public/scripts`),
+  },
 };
-
