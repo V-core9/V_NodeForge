@@ -15,7 +15,8 @@
     ".editorconfig": true,
     "package-lock.json": true,
     ".jshintrc": true,
-    ".vscode": true
+    ".vscode": true,
+    ".github": true
   },
   "explorerExclude.backup": null
 }

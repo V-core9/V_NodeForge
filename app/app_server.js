@@ -17,16 +17,10 @@ app.use(express.static("public"));
 
 const V_core9 = {
 
-  v_config : require("./SOURCE/config/app_config"),
+  v_config : require("./source/config/app_config"),
   autostart: true,
 
-  _pagesList: [
-    require("./SOURCE/pages/home"),
-    require("./SOURCE/pages/about"),
-    require("./SOURCE/pages/customer_login"),
-    require("./SOURCE/pages/customer_register"),
-    require("./SOURCE/pages/author")  
-  ],
+  _pagesList: require('./source/pages/_pages_list'),
 
   loadPage: async (pageName, req, res) => {
     for (let i = 0; i < V_core9._pagesList.length; i++) {
